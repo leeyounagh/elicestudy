@@ -14,6 +14,4 @@ function useDebounce(value, delay = 1000) {
   return debounceVal;
 }
 
-//Value =>e.target.value 타이핑이끝나고 1초후 불러온다!
-
 export default useDebounce;

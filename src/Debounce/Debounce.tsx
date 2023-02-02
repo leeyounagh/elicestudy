@@ -6,13 +6,19 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import useDebounce from "./customHook/useDebounce";
 
-// git config 파일에 인증키 추가해야됨
+type SearchType = {
+  kindCd: string;
+  popfile: string;
+  careNm: string;
+  specialMark: string;
+  weight: string;
+};
 
 function Debounce() {
   const mainUrl = `${process.env.React_App_MAINURL}&serviceKey=${process.env.React_App_ENCODEKEY}`;
   // 테스트 데이터 정의
-  const [mainData, setMainData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [mainData, setMainData] = useState<SearchType[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const debounceValue = useDebounce(searchTerm);
   // 디바운스 표현을위한 커스텀훅 호출
@@ -20,6 +26,7 @@ function Debounce() {
   const getAxiosData = async () => {
     const response = await axios.get(mainUrl);
     const { item } = await response.data.response.body.items;
+
     setMainData((prev) => [...prev, ...item]);
   };
 
@@ -40,7 +47,7 @@ function Debounce() {
               type="text"
               placeholder="🍳 제목검색.."
               value={searchTerm}
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 e.preventDefault();
                 SearchOnchange(e.target.value);
               }}
