@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+타입스크립트 정리
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+사용이유: 함수파라미터의 타입을 정의하여 런타임 오류가 절대 발생하지 않도록함.
 
-## Available Scripts
+특징
 
-In the project directory, you can run:
+1. ecma표준을 따름
+2. 자바스트립트는 동적언어, 타입스크립트는 정적언어이다. 따라서 타입스크립트에서는 자바스크립트가 지원되지만,
+   자바스크립트에서는 타입스크립트를 지원하지 않음
+3. 타임스크립트로 작성한 프로그램은 자바스크립트로 트랜스파일해야 브라우저나 자바스크립트엔진에서 실행할수 있습니다.
 
-### `npm start`
+타입스크립트 배포과정
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+타입스크립트파일 =>자바스크립트파일 => 단일자바스크립트 파일 => 자바스크립트엔진
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+기본타입의 종류
+string :문자열
+boolean :true,false값
+number :숫자
+symbol =>변경불가능한 원시타입으로 객체 프로퍼티를 만들때 사용
+사용방법:
+const sym =Symbol("orderId");
+const mysymbol ={
+sym:"123"
+}
+any :모든타입을 허용하는 타입
+unknown :any와 비슷하지만 먼저 타입을 지정하거나 좁히지 않으면 조작이 허용되지않음
+never => 절대 반환을 하지않는 함수에 사용/ 실행이 종료되지않는 함수나 오류를 발생시키기 위해서만 존재하는 함수의 타입을 지정할때 사용
+void: 값이 없음/ 함수 타입지정할때 많이 쓰임
 
-### `npm test`
+커스텀 타입의 종류
+type,class,interface 키워드가 있음
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+type,interface 키워드를 사용해야 되는 경우: 런타임동안 객체를 인스턴스화 해야된다면 interface,type을 사용해야됨
+class 키워드를 사용하는경우: 값을 나타내는데 사용하는 경우 class 타입을 쓴다.
 
-### `npm run build`
+정리) 타입스크립트의 타입 검사기로 안전하게 커스텀 타입을 선언하고자 한다면 type또는 interface를 사용한다.
+이유는 자바스크립트 코드로 컴파일 되지않기때문에 런타임코드 용량이 작아진다.
+but class키워드는 자바스크립트 코드로 컴파일되기때문에 용량이 커진다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ecma란? 자바스크립트를 표준화 하기위해 만든 script 언어
