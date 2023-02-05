@@ -34,7 +34,7 @@ function Debounce() {
     getAxiosData();
   }, [debounceValue]);
 
-  const SearchOnchange = (value) => {
+  const SearchOnchange = (value: any) => {
     setSearchTerm(value);
   };
 
